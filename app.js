@@ -22,6 +22,10 @@ app.get('/text',(req,res)=>{
 
     
 })
+app.get('/data/:id',(req,res)=>{
+    const data = require('./public/jsons/data.json')
+    res.send(data[req.params.id])
+})
 
 
 
