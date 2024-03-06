@@ -2,6 +2,11 @@
 const express = require('express')
 const app = express()
 
+app.use((req,res,next)=>{
+    res.setHeader('Access-Control-Allow-Origin','*')
+    next()
+})
+
 app.get('/', (req, res)=>{
     res.send(`<ul>
     <li><a href="/manul">manul</a></li>
@@ -25,6 +30,11 @@ app.get('/text',(req,res)=>{
 app.get('/data/:id',(req,res)=>{
     const data = require('./public/jsons/data.json')
     res.send(data[req.params.id])
+})
+app.get('/data',(req,res)=>{
+    const data = require('./public/jsons/data.json')
+    // res.set('Access-Control-Allow-Origin','*')
+    res.send(data)
 })
 
 
